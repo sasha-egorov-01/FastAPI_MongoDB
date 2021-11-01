@@ -7,9 +7,11 @@ from bson import ObjectId
 from typing import Optional, List
 import motor.motor_asyncio
 
+# Поднятие фаст апи
 app = FastAPI()
-MONGODB_URL = "mongodb+srv://admin:123@cluster0.m72k6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
+# Подключение к монго
+MONGODB_URL = "mongodb+srv://admin:123@cluster0.m72k6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
 db = client.our_date
 
@@ -29,7 +31,7 @@ class PyObjectId(ObjectId):
     def __modify_schema__(cls, field_schema):
         field_schema.update(type="string")
 
-
+# Создание моделей 
 class StudentModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     name: str = Field(...)
