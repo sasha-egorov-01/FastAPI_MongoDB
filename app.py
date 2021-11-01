@@ -35,16 +35,9 @@ class PyObjectId(ObjectId):
 class StudentModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     name: str = Field(...)
-    email: EmailStr = Field(...)
-    course: str = Field(...)
-    gpa: float = Field(..., le=4.0)
-
 
 class UpdateStudentModel(BaseModel):
     name: Optional[str]
-    email: Optional[EmailStr]
-    course: Optional[str]
-    gpa: Optional[float]
 
 
 
@@ -68,7 +61,7 @@ async def list_students():
 
 
 
-# Отдельный чел 
+# Получить отдельного чела 
 @app.get(
     "/{id}", response_description="Get a single student", response_model=StudentModel
 )
