@@ -1,0 +1,12 @@
+[Unit]
+Description=MongoDb Compas
+After=network.target
+
+[Service]
+User=mongo_compas
+Group=mongo_compas
+Type=simple
+ExecStart=/usr/bin/mongodb-compass
+
+[Install]
+WantedBy=multi-user.target
